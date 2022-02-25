@@ -1,4 +1,4 @@
-import './App.css';
+import '../src/App.css';
 import Calculator from './components/calculator';
 import Header from './components/header';
 
