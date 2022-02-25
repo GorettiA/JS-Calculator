@@ -1,6 +1,7 @@
 # JS Calculator
 
-JS Calculator styled with pure CSS.
+JS Calculator built in ReactJS and styled with CSS.
+
 
 
 
