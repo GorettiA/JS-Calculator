@@ -36,13 +36,43 @@ function reducer(state, { type, payload }) {
           currentOutput: null,
         }
       }
-      break;
+
+      return {
+        ...state,
+        previousOutput: evaluate(state),
+        operation: payload.operation,
+        currentOutput: null,
+      }
       case ACTIONS.CLEAR_ALL:
         return {}
     default:
       return state
 }
   }
+
+function evaluate({ currentOutput, previousOutput, operation }) {
+  const prev = parseFloat(previousOutput)
+  const curr = parseFloat(currentOutput)
+  if(isNaN(prev) || isNaN(curr)) return ""
+  let computation = ""
+  switch(operation) {
+    case "+":
+      computation = prev + curr
+      break
+    case "-":
+      computation = prev - curr
+      break
+    case "*":
+      computation = prev * curr
+      break
+    case "÷":
+      computation = prev / curr
+      break
+    default:
+    }
+    return computation.toString()
+}
+
 
 function App() {
 
