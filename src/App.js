@@ -24,10 +24,25 @@ function reducer(state, { type, payload }) {
         ...state,
         currentOutput:`${state.currentOutput || ""}${payload.digit}`
       }
+      case ACTIONS.SELECT_OPERATION:
+      if(state.currentOutput == null && state.previousOutput == null) {
+        return state
+      }
+      if (state.previousOutput == null) {
+        return {
+          ...state,
+          operation: payload.operation,
+          previousOutput: state.currentOutput,
+          currentOutput: null,
+        }
+      }
+      break;
+      case ACTIONS.CLEAR_ALL:
+        return {}
     default:
       return state
-  }
 }
+  }
 
 function App() {
 
@@ -39,7 +54,7 @@ function App() {
             <div className='previous-output'>{previousOutput}{operation}</div>
             <div className='current-output'>{currentOutput}</div>
         </div>
-        <button className='span-two'>AC</button>
+        <button className='span-two' onClick={() => dispatch({ type: ACTIONS.CLEAR_ALL})}>AC</button>
         <button>DEL</button>
         <OperationButton operation="÷" dispatch={dispatch} />     
         <DigitButton digit="1" dispatch={dispatch} />
