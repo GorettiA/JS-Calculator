@@ -1,11 +1,12 @@
 import React from 'react'
 
 export default function Calculator() {
+
   return (
     <div className='calculator-grid'>
         <div className='output'>
-            <div className='previous-output'></div>
-            <div className='current-output'></div>
+            <div className='previous-output'>{previousOutput}{operation}</div>
+            <div className='current-output'>{currentOutput}</div>
         </div>
         <button className='span-two'>AC</button>
         <button>DEL</button>
@@ -28,3 +29,4 @@ export default function Calculator() {
     </div>
   )
 }
+
